@@ -9,6 +9,51 @@ This project normalizes disparate risk sources (cloud, vendor, vulnerability, AI
 
 ### Architecture
 
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA SOURCES (Simulated)                     │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
+│  │ Security │  │  Vendor  │  │    AI    │  │   Ops    │        │
+│  │ Scanner  │  │  TPRM    │  │ Registry │  │Incidents │        │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘        │
+└───────┼─────────────┼─────────────┼─────────────┼──────────────┘
+        │             │             │             │
+        ▼             ▼             ▼             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              INGESTION & NORMALIZATION LAYER                    │
+│   (Python scripts: 01_ingest.py, ingest_*.py)                   │
+│   Maps heterogeneous schemas → unified risk_portfolio schema    │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA STORE (SQLite)                          │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐    │
+│  │ business_      │  │ risk_          │  │ ai_            │    │
+│  │ services       │  │ portfolio      │  │ controls       │    │
+│  └────────────────┘  └────────────────┘  └────────────────┘    │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐    │
+│  │ risk_history   │  │ control_tests  │  │ audit_log      │    │
+│  └────────────────┘  └────────────────┘  └────────────────┘    │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│               ANALYTICAL ENGINE (Python/pandas)                 │
+│   Weighted residual risk calculation                            │
+│   Business impact weighting                                     │
+│   Monte Carlo simulation (optional)                             │
+│   Stress-test scenario engine                                   │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              PRESENTATION LAYER (Streamlit)                     │
+│   Executive KPI cards                                           │
+│   Prioritization queue                                          │
+│   AI risk spotlight                                             │
+│   Business service reference                                    │
+└─────────────────────────────────────────────────────────────────┘
+
 ```mermaid
 flowchart TD
 
