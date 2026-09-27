@@ -9,6 +9,23 @@ This project normalizes disparate risk sources (cloud, vendor, vulnerability, AI
 
 ### Architecture
 
+```mermaid
+flowchart TD
+
+    A["data/"] --> A1["SQLite database<br/>(generated)"]
+
+    B["scripts/"] --> B1["01_ingest.py<br/>Provisions DB and loads seed telemetry"]
+    B --> B2["02_engine.py<br/>Calculates weighted residual risk"]
+
+    C["app.py<br/>Streamlit executive dashboard"]
+
+    D["docs/"] --> D1["EXECUTIVE_MEMO.md"]
+    D --> D2["dashboard_screenshot.png"]
+
+    E["tests/"] --> E1["test_engine.py"]
+```
+
+```text
 ┌─────────────────────────────────────────────────────────────────┐
 │                    DATA SOURCES (Simulated)                     │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐        │
@@ -53,22 +70,9 @@ This project normalizes disparate risk sources (cloud, vendor, vulnerability, AI
 │   AI risk spotlight                                             │
 │   Business service reference                                    │
 └─────────────────────────────────────────────────────────────────┘
-
-```mermaid
-flowchart TD
-
-    A["data/"] --> A1["SQLite database<br/>(generated)"]
-
-    B["scripts/"] --> B1["01_ingest.py<br/>Provisions DB and loads seed telemetry"]
-    B --> B2["02_engine.py<br/>Calculates weighted residual risk"]
-
-    C["app.py<br/>Streamlit executive dashboard"]
-
-    D["docs/"] --> D1["EXECUTIVE_MEMO.md"]
-    D --> D2["dashboard_screenshot.png"]
-
-    E["tests/"] --> E1["test_engine.py"]
 ```
+
+
 
 
 
