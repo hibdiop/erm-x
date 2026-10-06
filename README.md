@@ -65,8 +65,8 @@ This project normalizes disparate risk sources (cloud, vendor, vulnerability, AI
 ### Quick Start
 
 ```bash
-git clone https://github.com/hibdiop/fisa-erm-x.git
-cd fisa-erm-x
+git clone https://github.com/hibdiop/erm-x.git
+cd erm-x
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
@@ -87,7 +87,7 @@ streamlit run app.py
 
 ## Streamlit Snapshot
 
-<img src="https://github.com/hibdiop/fisa-erm-x/blob/main/Risk.png" alt="Operational Risk Ecosystem" width="900">
+<img src="https://github.com/hibdiop/erm-x/blob/main/Risk.png" alt="Operational Risk Ecosystem" width="900">
 
 
 
