@@ -1,6 +1,6 @@
 # Enterprise Risk Engine (ERM-X)
 
-A working prototype demonstrating unified risk telemetry, business impact quantification, and Agentic AI governance for NYC's payroll and financial systems.
+A working prototype demonstrating unified risk telemetry, business impact quantification, and Agentic AI governance for payroll and financial systems.
 
 ### Purpose
 
